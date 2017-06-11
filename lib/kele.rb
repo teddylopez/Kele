@@ -16,6 +16,11 @@ class Kele
     @user_data = JSON.parse(response.body)
   end
 
+  def get_mentor_availability(mentor_id)
+    response = self.class.get(base_api_endpoint("mentors/#{mentor_id}/student_availability"), headers: { "authorization" => @auth_token })
+    @mentor_availability = JSON.parse(response.body)
+  end
+
 private
 
   def base_api_endpoint(end_point)
